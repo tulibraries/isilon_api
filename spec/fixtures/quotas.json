@@ -1,0 +1,397 @@
+{
+
+  "quotas": [
+    {
+      "container": true,
+      "enforced": true,
+      "id": "TQGdAAEAAAAAAAAAAAAAQAMAAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "default",
+      "path": "/ifs/data/libraryfs/deposit",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 27487790694400,
+        "advisory_exceeded": false,
+        "advisory_last_exceeded": 0,
+        "hard": 28587302322176,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 929173,
+        "logical": 25672323350645,
+        "physical": 38699953003520
+      }
+    },
+    {
+      "container": false,
+      "enforced": true,
+      "id": "cGWfAAEAAAAAAAAAAAAAQA4AAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "default",
+      "path": "/ifs/data/libraryfs/media-repository",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 39582418599936,
+        "advisory_exceeded": false,
+        "advisory_last_exceeded": 0,
+        "hard": 43980465111040,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 38448,
+        "logical": 30817362069334,
+        "physical": 46313054729216
+      }
+    },
+    {
+      "container": false,
+      "enforced": true,
+      "id": "IAG4AAEAAAAAAAAAAAAAQAQAAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "default",
+      "path": "/ifs/data/libraryfs/media-deposit",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 25288767438848,
+        "advisory_exceeded": false,
+        "advisory_last_exceeded": 0,
+        "hard": 27487790694400,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 44172,
+        "logical": 9497743944207,
+        "physical": 14275475373568
+      }
+    },
+    {
+      "container": false,
+      "enforced": true,
+      "id": "DAC7AAEAAAAAAAAAAAAAQAsAAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "default",
+      "path": "/ifs/data/libraryfs/repository",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 1099511627776,
+        "advisory_exceeded": false,
+        "advisory_last_exceeded": 0,
+        "hard": 2199023255552,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 47,
+        "logical": 281766,
+        "physical": 980992
+      }
+    },
+    {
+      "container": false,
+      "enforced": true,
+      "id": "NQH9AAEAAAAAAAAAAAAAQA8AAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "default",
+      "path": "/ifs/data/libraryfs/media-work",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 1099511627776,
+        "advisory_exceeded": false,
+        "advisory_last_exceeded": 0,
+        "hard": 2199023255552,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 53,
+        "logical": 560839,
+        "physical": 1669632
+      }
+    },
+    {
+      "container": false,
+      "enforced": true,
+      "id": "ngD-AAEAAAAAAAAAAAAAQBAAAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "default",
+      "path": "/ifs/data/libraryfs/work",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 1099511627776,
+        "advisory_exceeded": false,
+        "advisory_last_exceeded": 0,
+        "hard": 2199023255552,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 53,
+        "logical": 560897,
+        "physical": 1693696
+      }
+    },
+    {
+      "container": false,
+      "enforced": true,
+      "id": "YQOWAQEAAAAAAAAAAAAAQAUAAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "custom",
+      "path": "/ifs/data/libraryfs/video-delivery",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 7696581394432,
+        "advisory_exceeded": false,
+        "advisory_last_exceeded": 0,
+        "hard": 8796093022208,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 16709,
+        "logical": 6485446391719,
+        "physical": 9757435076608
+      }
+    },
+    {
+      "container": false,
+      "enforced": true,
+      "id": "5hgXAgEAAAAAAAAAAAAAQAgAAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "default",
+      "path": "/ifs/data/libraryfs/sandbox-backups",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 12644383719424,
+        "advisory_exceeded": true,
+        "advisory_last_exceeded": 1463267479,
+        "hard": 13194139533312,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 3326,
+        "logical": 13058766621512,
+        "physical": 19637742507520
+      }
+    },
+    {
+      "container": true,
+      "enforced": true,
+      "id": "uSskAgEAAAAAAAAAAAAAQAIAAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "default",
+      "path": "/ifs/data/libraryfs/applications-backup",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 3298534883328,
+        "advisory_exceeded": false,
+        "advisory_last_exceeded": 0,
+        "hard": 5497558138880,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 38965,
+        "logical": 2967604190149,
+        "physical": 4463263907328
+      }
+    },
+    {
+      "container": false,
+      "enforced": true,
+      "id": "IBDxAgEAAAAAAAAAAAAAQAcAAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "default",
+      "path": "/ifs/data/libraryfs/ssdl-data",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 2199023255552,
+        "advisory_exceeded": false,
+        "advisory_last_exceeded": 0,
+        "hard": 2748779069440,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 941264,
+        "logical": 1683878212772,
+        "physical": 2563255483392
+      }
+    },
+    {
+      "container": false,
+      "enforced": true,
+      "id": "zBbxAgEAAAAAAAAAAAAAQAYAAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "default",
+      "path": "/ifs/data/libraryfs/media-transfer",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 31885837205504,
+        "advisory_exceeded": false,
+        "advisory_last_exceeded": 0,
+        "hard": 34084860461056,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 53210,
+        "logical": 30855502695614,
+        "physical": 46395546725376
+      }
+    },
+    {
+      "container": false,
+      "enforced": true,
+      "id": "Y1ryAwEAAAAAAAAAAAAAQAoAAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "default",
+      "path": "/ifs/data/libraryfs/assets-delivery",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 3298534883328,
+        "advisory_exceeded": false,
+        "advisory_last_exceeded": 0,
+        "hard": 5497558138880,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 673,
+        "logical": 433601735,
+        "physical": 729335808
+      }
+    },
+    {
+      "container": true,
+      "enforced": true,
+      "id": "THxlBQEAAAAAAAAAAAAAQBEAAAAAAAAA",
+      "include_snapshots": false,
+      "linked": null,
+      "notifications": "default",
+      "path": "/ifs/data/libraryfs/sufia-data",
+      "persona": null,
+      "ready": true,
+      "thresholds": {
+        "advisory": 9895604649984,
+        "advisory_exceeded": false,
+        "advisory_last_exceeded": 0,
+        "hard": 10995116277760,
+        "hard_exceeded": false,
+        "hard_last_exceeded": 0,
+        "soft": null,
+        "soft_exceeded": false,
+        "soft_grace": null,
+        "soft_last_exceeded": null
+      },
+      "thresholds_include_overhead": false,
+      "type": "directory",
+      "usage": {
+        "inodes": 1,
+        "logical": 12,
+        "physical": 2048
+      }
+    }
+  ],
+  "resume": null
+
+}
