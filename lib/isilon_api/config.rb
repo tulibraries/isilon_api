@@ -3,7 +3,7 @@ module IsilonApi
     attr_accessor :configuration
   end
 
-  def self.configure
+  def self.configure()
     self.configuration ||= Configuration.new
     yield(configuration)
   end
@@ -17,5 +17,6 @@ module IsilonApi
       @host     = 'isilon.example.com'
       @port     = '8080'
     end
+
   end
 end

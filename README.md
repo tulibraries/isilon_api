@@ -1,15 +1,11 @@
 # IsilonApi
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/isilon_api`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'isilon_api'
+gem 'isilon_api', :github => 'tulibraries/isilon_api'
 ```
 
 And then execute:
@@ -20,9 +16,34 @@ Or install it yourself as:
 
     $ gem install isilon_api
 
-## Usage
+## Config
 
-TODO: Write usage instructions here
+You'll need to add configuration for your Isilon cluster so you can connect to the API endpoint. To do 
+so in a rails app, create `config/initializers/isilon.rb` with :
+
+```
+IsilonApi.configure do |config|
+  config.user     = 'example_user'
+  config.password = '3x4mpl3_p4$$w0rd'
+  config.host     = 'isilon.example.com'
+  config.port     = '8080'
+end
+```
+ 
+## Using
+
+Get some information about quotas
+
+```
+isilon = IsilonApi::Base.new
+
+quotas = isilon.get_quotas
+
+quotas.first.usage
+278742345
+
+
+
 
 ## Development
 
@@ -38,4 +59,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-

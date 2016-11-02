@@ -1,0 +1,30 @@
+{
+  "container": true,
+  "enforced": true,
+  "id": "TQGdAAEAAAAAAAAAAAAAQAMAAAAAAAAA",
+  "include_snapshots": false,
+  "linked": null,
+  "notifications": "default",
+  "path": "/ifs/data/libraryfs/deposit",
+  "persona": null,
+  "ready": true,
+  "thresholds": {
+    "advisory": 27487790694400,
+    "advisory_exceeded": false,
+    "advisory_last_exceeded": 0,
+    "hard": 28587302322176,
+    "hard_exceeded": false,
+    "hard_last_exceeded": 0,
+    "soft": null,
+    "soft_exceeded": false,
+    "soft_grace": null,
+    "soft_last_exceeded": null
+  },
+  "thresholds_include_overhead": false,
+  "type": "directory",
+  "usage": {
+    "inodes": 929173,
+    "logical": 25672323350645,
+    "physical": 38699953003520
+  }
+}

@@ -7,14 +7,13 @@ class IsilonApi::Base
   end
 
   def get_quotas
-    @conn.get('/platform/1/quota/quotas')
+    IsilonApi::Quotas.new(connection).list
   end
-
 
   def connection
     conn = Faraday.new(:url => base_uri) do |faraday|
       faraday.request  :retry
-      faraday.response :logger  # log requests to STDOUT
+      #faraday.response :logger  # log requests to STDOUT
       faraday.adapter  :net_http
     end
     conn.basic_auth(config.user, config.password)
