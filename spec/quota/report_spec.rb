@@ -19,7 +19,7 @@ RSpec.describe IsilonApi::Report do
     end
 
     it 'displays quota array' do
-      expect(IsilonApi::Report.to_array(@quota)).to match_array [
+      expect(IsilonApi::Report.to_array(@quota, "MB")).to match_array [
         @quota.name,
         @quota.path,
         @quota.usage,
@@ -33,12 +33,13 @@ RSpec.describe IsilonApi::Report do
 
   end
 
-  context 'quota report' do
-    before do
-    end
-
+  describe 'quota report' do
     it 'writes a report' do
-      @report = IsilonApi::Report.new("report.csv")
+      #csv_output = StringIO.new
+      csv_filename = "report.csv"
+      IsilonApi::Report.generate_csv (csv_filename)
+      #puts "After: #{csv_output.string}"
+      binding.pry
     end
   end
 end

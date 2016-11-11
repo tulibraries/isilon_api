@@ -1,31 +1,28 @@
 require 'json'
 require 'spec_helper'
 require 'csv'
+require 'stringio'
 
 module IsilonApi
-  class Report
+  module Report
 
     @@isilon_total_size = 1.0E+15
 
-    def initialize (log_output, units="MB")
-      @units = units
-      @log_output = log_output
-      magnitude_table={"MB": 1_000_000,
-                       "GB": 1_000_000_000,
-                       "TB": 1_000_000_000_000,
-                       "PB": 1_000_000_000_000_000}
-      @scale_factor = magnitude_table[units]
-      @report = Array.new
-      @csv_file = CSV.open(@log_output, "wb")
+    def self.initialize (csv_filename, units=:mb)
+      @units = units ? units : :mb 
+      @csv_file = CSV.open(csv_filename, 'wb')
+
+      magnitude_table={mb: 1.0E+6,
+                       gb: 1.0E+9,
+                       tb: 1.0E+12,
+                       pb: 1.0E+15}
+      @scale_factor = magnitude_table.include?(units) ? magnitude_table[units] : magnitude_table[:mb]
 
       @conn = IsilonApi::Base.new.connection
       @isilon_conn = IsilonApi::Quotas.new @conn
-
-      generate
-
     end
 
-    def header
+    def self.header(csv_file)
       quotas_header = [
         "name",
         "path",
@@ -36,28 +33,29 @@ module IsilonApi
         "precentage used",
         "hard limit (%)"
       ]
-      @csv_file << quotas_header
+      csv_file << quotas_header
     end
 
-    def self.to_array (quotas)
+    def self.to_array (quotas, scale_factor)
       quotas_array =  [quotas.name]
       quotas_array << quotas.path
-      quotas_array << quotas.usage #/ @scale_factory
-      quotas_array << quotas.free_space #/ @scale_factor
-      quotas_array << quotas.soft_limit #/ @scale_factor
-      quotas_array << quotas.hard_limit #/ @scale_factor
+      quotas_array << quotas.usage #/ scale_factor
+      quotas_array << quotas.free_space #/ scale_factor
+      quotas_array << quotas.soft_limit #/ scale_factor
+      quotas_array << quotas.hard_limit #/ scale_factor
       quotas_array << quotas.percent_used
       quotas_array << Float(quotas.usage) / @@isilon_total_size
 
       return quotas_array
     end
 
-    def generate
-      header
+    def self.generate_csv(csv_filename, units=:mb)
+      initialize(csv_filename, units)
+      header(@csv_file)
       raw = JSON.parse(@isilon_conn.request_quotas.body)["quotas"]
-      raw.each do |share_quota|
+      raw.each_with_index do |share_quota, i|
         quota = IsilonApi::Quota.new :quota => share_quota
-        @csv_file << Report.to_array(quota)
+        @csv_file << to_array(quota, @scale_factor)
       end
     end
 
