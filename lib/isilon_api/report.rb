@@ -39,14 +39,17 @@ module IsilonApi
     def self.to_array (quotas, scale_factor)
       quotas_array =  [quotas.name]
       quotas_array << quotas.path
-      quotas_array << quotas.usage #/ scale_factor
-      quotas_array << quotas.free_space #/ scale_factor
-      quotas_array << quotas.soft_limit #/ scale_factor
-      quotas_array << quotas.hard_limit #/ scale_factor
-      quotas_array << quotas.percent_used
+      quotas_array << Float(quotas.usage) / scale_factor
+      quotas_array << Float(quotas.free_space) / scale_factor
+      quotas_array << Float(quotas.soft_limit) / scale_factor
+      quotas_array << Float(quotas.hard_limit) / scale_factor
+      quotas_array << Float(quotas.percent_used) * 100.0
       quotas_array << Float(quotas.usage) / @@isilon_total_size
 
-      return quotas_array
+      # Format output
+      quotas_string = sprintf("%s,%s,%.2f,%.2f,%.2f,%.2f,%.2f,%.2f", *quotas_array)
+
+      return CSV.parse(quotas_string).first
     end
 
     def self.generate_csv(csv_filename, units=:mb)

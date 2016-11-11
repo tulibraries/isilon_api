@@ -35,11 +35,8 @@ RSpec.describe IsilonApi::Report do
 
   describe 'quota report' do
     it 'writes a report' do
-      #csv_output = StringIO.new
       csv_filename = "report.csv"
       IsilonApi::Report.generate_csv (csv_filename)
-      #puts "After: #{csv_output.string}"
-      binding.pry
     end
   end
 end
