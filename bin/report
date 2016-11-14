@@ -1,0 +1,18 @@
+#! /usr/bin/env ruby
+#
+$LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
+require "isilon_api"
+require "optparse"
+
+units = ''
+
+OptionParser.new do |opts|
+  opts.banner = "Usage: bin/report output_filename.csv [unit argument]"
+  valid_units = IsilonApi::Report.units_table.keys
+
+  opts.on("-uUNITS", "--units=UNITS", "byte units to display memory space (#{valid_units.join(', ')})") do |u|
+    units = u
+  end
+end.parse!
+
+IsilonApi::Report.generate_csv(ARGV[0], units)

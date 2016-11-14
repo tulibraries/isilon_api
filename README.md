@@ -51,6 +51,18 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+
+~~~~~~~~~~~~~~~~~~~~~
+
+## Report Generation
+
+To generate a report, run `bin/report report.csv` to generate a CSV formatted report. Default units are in mb. To change, 
+use the `-u` or `--units=mb|gb|tb|pb` option. Valid units are 'mb', 'gb', 'tb', and 'pb' for megabytes, gigabytes, terabytes, and petabytes.
+
+Use `--help` to see all available options
+
+~~~~~~~~~~~~~~~~~~~~~
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/isilon_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
