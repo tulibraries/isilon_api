@@ -1,22 +1,25 @@
 require 'json'
-require 'spec_helper'
 require 'csv'
 require 'stringio'
+require 'isilon_api'
+require 'pry'
 
 module IsilonApi
   module Report
 
     @@isilon_total_size = 1.0E+15
+    @@default_scale_factor = 1.0E+6
 
-    def self.initialize (csv_filename, units=:mb)
-      @units = units ? units : :mb 
+    def self.initialize (csv_filename)
+      @config = IsilonApi.configuration
+      @units = @config.units ? @config.units : 'mb'
       @csv_file = CSV.open(csv_filename, 'wb')
 
-      magnitude_table={mb: 1.0E+6,
-                       gb: 1.0E+9,
-                       tb: 1.0E+12,
-                       pb: 1.0E+15}
-      @scale_factor = magnitude_table.include?(units) ? magnitude_table[units] : magnitude_table[:mb]
+      magnitude_table={'mb' => 1.0E+6,
+                       'gb' => 1.0E+9,
+                       'tb' => 1.0E+12,
+                       'pb' => 1.0E+15}
+      @scale_factor = magnitude_table.include?(@units) ? magnitude_table[@units] : @default_scale_factor 
 
       @conn = IsilonApi::Base.new.connection
       @isilon_conn = IsilonApi::Quotas.new @conn
@@ -36,7 +39,7 @@ module IsilonApi
       csv_file << quotas_header
     end
 
-    def self.to_array (quotas, scale_factor)
+    def self.to_array (quotas, scale_factor = @@default_scale_factor)
       quotas_array =  [quotas.name]
       quotas_array << quotas.path
       quotas_array << (Float(quotas.usage) / scale_factor).round(2)
@@ -49,8 +52,8 @@ module IsilonApi
       return quotas_array
     end
 
-    def self.generate_csv(csv_filename, units=:mb)
-      initialize(csv_filename, units)
+    def self.generate_csv(csv_filename)
+      initialize(csv_filename)
       header(@csv_file)
       raw = JSON.parse(@isilon_conn.request_quotas.body)["quotas"]
       raw.each_with_index do |share_quota, i|

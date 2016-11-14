@@ -1,5 +1,5 @@
-# quota_report_spec.rb
-#
+require 'spec_helper'
+
 RSpec.configure do |config|
   config.before(:each) do
     @config = IsilonApi.configuration
@@ -19,15 +19,15 @@ RSpec.describe IsilonApi::Report do
     end
 
     it 'displays quota array' do
-      expect(IsilonApi::Report.to_array(@quota, "MB")).to match_array [
+      expect(IsilonApi::Report.to_array(@quota)).to match_array [
         @quota.name,
         @quota.path,
-        @quota.usage,
-        @quota.free_space,
-        @quota.soft_limit,
-        @quota.hard_limit,
-        @quota.percent_used,
-        Float(@quota.usage) / @quota.isilon_total_size
+        (@quota.usage / 1.0E+6).round(2),
+        (@quota.free_space / 1.0E+6).round(2),
+        (@quota.soft_limit / 1.0E+6).round(2),
+        (@quota.hard_limit / 1.0E+6).round(2),
+        (@quota.percent_used * 100).round(2),
+        (@quota.usage / @quota.isilon_total_size).round(2)
       ]
     end
 
