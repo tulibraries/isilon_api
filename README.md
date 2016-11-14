@@ -57,9 +57,10 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Report Generation
 
-To generate reports, set the unilts attribute in the configuration. Valid units are 'mb', 'gb', 'tb', and 'pb' for megabytes, gigabytes, terabytes, and petabytes.
+To generate a report, run `bin/report report.csv` to generate a CSV formatted report. Default units are in mb. To change, 
+use the `-u` or `--units=mb|gb|tb|pb` option. Valid units are 'mb', 'gb', 'tb', and 'pb' for megabytes, gigabytes, terabytes, and petabytes.
 
-To generate a report, run `bin/report report.csv` to generate a CSV formatted report. The report generator only creates CSV reports.
+Use `--help` to see all available options
 
 ~~~~~~~~~~~~~~~~~~~~~
 

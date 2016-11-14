@@ -35,8 +35,13 @@ RSpec.describe IsilonApi::Report do
 
   describe 'quota report' do
     it 'writes a report' do
-      csv_filename = "report.csv"
-      IsilonApi::Report.generate_csv (csv_filename)
+      expect { IsilonApi::Report.generate_csv('report.csv', 'mb') }.to_not raise_error
+    end
+    it 'passes default units' do
+      expect { IsilonApi::Report.generate_csv('report.csv') }.to_not raise_error
+    end
+    it 'wont pass wrong units' do
+      expect { IsilonApi::Report.generate_csv('report.csv', 'cb') }.to raise_error("Invalid --unit option")
     end
   end
 end

@@ -16,7 +16,6 @@ module IsilonApi
       @password = '3x4mpl3_p4$$w0rd'
       @host     = 'isilon.example.com'
       @port     = '8080'
-      @units    = 'mb'
     end
 
   end

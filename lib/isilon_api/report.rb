@@ -2,27 +2,38 @@ require 'json'
 require 'csv'
 require 'stringio'
 require 'isilon_api'
-require 'pry'
 
 module IsilonApi
   module Report
 
     @@isilon_total_size = 1.0E+15
     @@default_scale_factor = 1.0E+6
+    @@units_table={'mb' => 1.0E+6,
+                   'gb' => 1.0E+9,
+                   'tb' => 1.0E+12,
+                   'pb' => 1.0E+15}
 
-    def self.initialize (csv_filename)
+    def self.initialize (csv_filename, units)
       @config = IsilonApi.configuration
-      @units = @config.units ? @config.units : 'mb'
+
+      unless valid_units.include?(units)
+        abort("Invalid --unit option")
+      end
+      @units = units
       @csv_file = CSV.open(csv_filename, 'wb')
 
-      magnitude_table={'mb' => 1.0E+6,
-                       'gb' => 1.0E+9,
-                       'tb' => 1.0E+12,
-                       'pb' => 1.0E+15}
-      @scale_factor = magnitude_table.include?(@units) ? magnitude_table[@units] : @default_scale_factor 
+      @scale_factor = @@units_table.include?(@units) ? @@units_table[@units] : @default_scale_factor 
 
       @conn = IsilonApi::Base.new.connection
       @isilon_conn = IsilonApi::Quotas.new @conn
+    end
+
+    def self.units_table
+      @@units_table
+    end
+
+    def self.valid_units
+      @@units_table.keys
     end
 
     def self.header(csv_file)
@@ -52,8 +63,8 @@ module IsilonApi
       return quotas_array
     end
 
-    def self.generate_csv(csv_filename)
-      initialize(csv_filename)
+    def self.generate_csv(csv_filename, units = 'mb')
+      initialize(csv_filename, units)
       header(@csv_file)
       raw = JSON.parse(@isilon_conn.request_quotas.body)["quotas"]
       raw.each_with_index do |share_quota, i|
