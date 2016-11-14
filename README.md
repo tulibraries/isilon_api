@@ -27,6 +27,7 @@ IsilonApi.configure do |config|
   config.password = '3x4mpl3_p4$$w0rd'
   config.host     = 'isilon.example.com'
   config.port     = '8080'
+  config.units    = 'mb'
 end
 ```
  
@@ -50,6 +51,17 @@ quotas.first.usage
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+
+
+~~~~~~~~~~~~~~~~~~~~~
+
+## Report Generation
+
+To generate reports, set the unilts attribute in the configuration. Valid units are 'mb', 'gb', 'tb', and 'pb' for megabytes, gigabytes, terabytes, and petabytes.
+
+To generate a report, run `bin/report report.csv` to generate a CSV formatted report. The report generator only creates CSV reports.
+
+~~~~~~~~~~~~~~~~~~~~~
 
 ## Contributing
 
