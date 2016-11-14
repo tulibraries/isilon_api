@@ -9,7 +9,7 @@ module IsilonApi
   end
 
   class Configuration
-    attr_accessor :user, :password, :host, :port, :units
+    attr_accessor :user, :password, :host, :port
 
     def initialize
       @user     = 'example_user'

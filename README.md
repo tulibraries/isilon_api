@@ -27,7 +27,6 @@ IsilonApi.configure do |config|
   config.password = '3x4mpl3_p4$$w0rd'
   config.host     = 'isilon.example.com'
   config.port     = '8080'
-  config.units    = 'mb'
 end
 ```
  
