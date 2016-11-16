@@ -3,15 +3,28 @@
 $LOAD_PATH.unshift File.expand_path("../../lib", __FILE__)
 require "isilon_api"
 require "optparse"
+require "yaml"
 
-units = ''
+units = 'mb'
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: bin/report output_filename.csv [unit argument]"
+  opts.banner = "Usage: bin/report output_filename.csv [options]"
   valid_units = IsilonApi::Report.units_table.keys
 
   opts.on("-uUNITS", "--units=UNITS", "byte units to display memory space (#{valid_units.join(', ')})") do |u|
     units = u
+  end
+
+  opts.on("-cCONFIG_FILE", "--config=CONFIG_FILE", "Path to configuration file") do |config_file|
+    if File.exists? config_file
+      config_options = YAML.load_file(config_file)
+      IsilonApi.configure do |config|
+        config.user     = config_options['user']
+        config.password = config_options['password']
+        config.host     = config_options['host']
+        config.port     = config_options['port']
+      end
+    end
   end
 end.parse!
 
