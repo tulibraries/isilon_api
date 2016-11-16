@@ -59,6 +59,16 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 To generate a report, run `bin/report report.csv` to generate a CSV formatted report. Default units are in mb. To change, 
 use the `-u` or `--units=mb|gb|tb|pb` option. Valid units are 'mb', 'gb', 'tb', and 'pb' for megabytes, gigabytes, terabytes, and petabytes.
 
+You may also provide a path to a configuration file with the `-c /path/to/config.yml` or `--config=/path/to/config.yml`.  The config file is a yml file containing
+
+```
+---
+
+user: 'example_isilon_user'
+password: '3x4mpl3_p4$$w0rd'
+host: 'isilon.example.com'
+port: '8080'
+```
 Use `--help` to see all available options
 
 ~~~~~~~~~~~~~~~~~~~~~
