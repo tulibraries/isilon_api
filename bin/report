@@ -8,7 +8,7 @@ require "yaml"
 units = 'mb'
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: bin/report output_filename.csv [unit argument] [options]"
+  opts.banner = "Usage: bin/report output_filename.csv [options]"
   valid_units = IsilonApi::Report.units_table.keys
 
   opts.on("-uUNITS", "--units=UNITS", "byte units to display memory space (#{valid_units.join(', ')})") do |u|
