@@ -11,7 +11,7 @@ class IsilonApi::Base
   end
 
   def connection
-    conn = Faraday.new(:url => base_uri) do |faraday|
+    conn = Faraday.new(:url => base_uri,  :ssl => {:verify => false}) do |faraday|
       faraday.request  :retry
       #faraday.response :logger  # log requests to STDOUT
       faraday.adapter  :net_http
