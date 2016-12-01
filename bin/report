@@ -6,10 +6,20 @@ require "optparse"
 require "yaml"
 
 units = 'mb'
+csv_filename = "quota_report-"+Time.now.strftime("%F-%H%M%S")+".csv"
+csv_path = "."
 
 OptionParser.new do |opts|
-  opts.banner = "Usage: bin/report output_filename.csv [options]"
+  opts.banner = "Usage: bin/report [options]"
   valid_units = IsilonApi::Report.units_table.keys
+
+  opts.on("-oREPORT_FILE_NAME", "--output=REPORT_FILE_NAME", "Name of the report file") do |o|
+    csv_filename = o
+  end
+
+  opts.on("-dREPORT_DIRECTORY", "--directory=REPORT_DIRECTORY", "Directory to save report") do |d|
+    csv_path = d + '/'
+  end
 
   opts.on("-uUNITS", "--units=UNITS", "byte units to display memory space (#{valid_units.join(', ')})") do |u|
     units = u
@@ -28,4 +38,4 @@ OptionParser.new do |opts|
   end
 end.parse!
 
-IsilonApi::Report.generate_csv(ARGV[0], units)
+IsilonApi::Report.generate_csv(File.join(csv_path, csv_filename), units)
