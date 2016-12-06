@@ -67,7 +67,7 @@ module IsilonApi
       initialize(csv_filename, units)
       header(@csv_file)
       raw = JSON.parse(@isilon_conn.request_quotas.body)["quotas"]
-      raw.each_with_index do |share_quota, i|
+      raw.sort_by {|quota| quota['path'] }.each_with_index do |share_quota, i|
         quota = IsilonApi::Quota.new :quota => share_quota
         @csv_file << to_array(quota, @scale_factor)
       end
