@@ -15,7 +15,7 @@ RSpec.describe IsilonApi::Report do
     before do
       raw = JSON.load(open(File.join(SPEC_ROOT, 'fixtures', 'single_quota.json')))
       @quota = IsilonApi::Quota.new :quota => raw
-      allow(@quota).to receive(:isilon_total_size) { 1.0E+15 }
+      allow(@quota).to receive(:isilon_total_size) { 313723602432 * 1024 }
     end
 
     it 'displays quota array' do
@@ -27,7 +27,7 @@ RSpec.describe IsilonApi::Report do
         (@quota.soft_limit / 1.0E+6).round(2),
         (@quota.hard_limit / 1.0E+6).round(2),
         (@quota.percent_used * 100).round(2),
-        (@quota.usage / @quota.isilon_total_size).round(2)
+        ((Float(@quota.usage) / @quota.isilon_total_size) * 100).round(2)
       ]
     end
 
