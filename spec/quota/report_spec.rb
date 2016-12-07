@@ -27,7 +27,7 @@ RSpec.describe IsilonApi::Report do
         (@quota.soft_limit / 1.0E+6).round(2),
         (@quota.hard_limit / 1.0E+6).round(2),
         (@quota.percent_used * 100).round(2),
-        (@quota.usage / @quota.isilon_total_size).round(2)
+        ((@quota.usage / @quota.isilon_total_size) * 100).round(2)
       ]
     end
 
