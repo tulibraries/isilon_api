@@ -73,6 +73,24 @@ Use `--help` to see all available options
 
 ~~~~~~~~~~~~~~~~~~~~~
 
+## Automatic Report Generation
+
+To run the report periodically and email the report to a user, create an entry in the isilon_api user's crontab by executing the `sudo - isilon_api_user crontab -e` command.
+The cron entry would look like:
+
+```
+0 1 * * 1 source /usr/local/share/isilon_api/.bash_profile ; /usr/local/share/isilon_api/isilon_api/bin/report -c /usr/local/share/isilon_api/isilon_api/config.yml -d /var/log/isilon_api
+```
+
+Which will run automatically on Monday's at 2:00AM
+
+Restart cron
+
+```bash
+sudo service crond restart
+```
+
+~~~~~~~~~~~~~~~~~~~~~
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/isilon_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
