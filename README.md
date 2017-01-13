@@ -79,7 +79,7 @@ To run the report periodically and email the report to a user, create an entry i
 The cron entry would look like:
 
 ```
-0 1 * * 1 source /usr/local/share/isilon_api/.bash_profile ; /usr/local/share/isilon_api/isilon_api/bin/report -c /usr/local/share/isilon_api/isilon_api/config.yml -d /var/log/isilon_api
+0 1 * * 1 source /usr/local/share/isilon_api/.bash_profile ; /usr/local/share/isilon_api/isilon_api/bin/report -c /usr/local/share/isilon_api/isilon_api/config.yml -d /var/log/isilon_api ; /usr/local/share/isilon_api/isilon_api/bin/sendreport
 ```
 
 Which will run automatically on Monday's at 2:00AM
