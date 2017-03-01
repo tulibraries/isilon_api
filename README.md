@@ -91,6 +91,14 @@ sudo service crond restart
 ```
 
 ~~~~~~~~~~~~~~~~~~~~~
+
+## Send the report by email
+
+Create a list of report recipients with a file named `report-recipients.txt`. Use the the example file `report-recipients.txt.example` as a template.  Copy the file to
+`report-recipients.txt` and replace the email addresses with the actual addresses of the intended recipients. Run the `bin/sendreport` to generate and email
+email a quota report.
+
+~~~~~~~~~~~~~~~~~~~~~
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/isilon_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
