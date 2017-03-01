@@ -6,7 +6,7 @@ require 'isilon_api'
 module IsilonApi
   module Report
 
-    @@isilon_total_size = 313723602432 * 1024 
+    @@isilon_total_size = 313723602432 * 1024 * 2 / 3
     @@default_scale_factor = 1.0E+6
     @@units_table={'mb' => 1.0E+6,
                    'gb' => 1.0E+9,
@@ -44,8 +44,8 @@ module IsilonApi
         "free (#{@units})",
         "soft quota (#{@units})",
         "hard quota (#{@units})",
-        "percentage used",
-        "hard limit (%)"
+        "percentage of hard limit used",
+        "percentage of Isilon used"
       ]
       csv_file << quotas_header
     end
