@@ -3,5 +3,5 @@
 /usr/local/share/isilon_api/isilon_api/bin/report -c /usr/local/share/isilon_api/isilon_api/config.yml -d /var/log/isilon_api
 m=$(eval "ls -dt /var/log/isilon_api/* | head -1")
 d=$(eval "echo $m | sed s/.*quota_report-// | sed s/\.csv//")
-t=$(eval "cat report-recipients.txt")
+t=$(eval "cat /usr/local/share/isilon_api/isilon_api/report-recipients.txt")
 echo "Isilon quota report for $d" | mailx -s "Isilon Quota Report For $d" -a $m $t
