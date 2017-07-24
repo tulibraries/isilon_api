@@ -55,7 +55,7 @@ module IsilonApi
       quotas_array << quotas.path
       quotas_array << (Float(quotas.usage) / scale_factor).round(2)
       quotas_array << (Float(quotas.free_space) / scale_factor).round(2)
-      quotas_array << (Float(quotas.soft_limit) / scale_factor).round(2)
+      quotas_array << (Float(quotas.soft_limit || 0.0) / scale_factor).round(2)
       quotas_array << (Float(quotas.hard_limit) / scale_factor).round(2)
       quotas_array << (Float(quotas.percent_used) * 100.0).round(2)
       quotas_array << (Float(quotas.usage) / @@isilon_total_size * 100.0).round(2) 
